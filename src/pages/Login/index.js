@@ -1,14 +1,35 @@
 import React from 'react';
-
-import './styles/style.css';
-
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Button, Divider, Typography, Form, Input, Row, Col } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-const { Title } = Typography;
 
+import httpClient from './../../helpers/httpClient';
+import { openNotification } from './../../utils';
+import AuthTypes from './../../constants/authTypes';
+import './styles/style.css';
+
+const { Title } = Typography;
 const Login = () => {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+
+    const navigation = useNavigate();
+    const dispatch = useDispatch();
+
+    async function onFinish (values) {
+        const loginRequest = await httpClient.post("/apiv1/user/login",{
+            username: values.username,
+            password: values.password
+        });
+        console.log(loginRequest);
+        if (loginRequest.error){
+            openNotification("error", "Inicio de sesión", "No se pudo iniciar sesión. Por favr intenta nuevamente.")
+        }else{
+            dispatch({
+                type: AuthTypes.LOGIN,
+                token: loginRequest.data.access_token
+            });
+            navigation('/home');
+        }
     };
 
     const onFinishFailed = (errorInfo) => {

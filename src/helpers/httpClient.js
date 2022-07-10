@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 
 const API = axios.create({
-    baseURL: process.env.API_GATEWAY_URL,
+    baseURL: process.env.REACT_APP_API_GATEWAY_URL,
     timeout: 4000,
     headers: {'accept': 'application/json'}
 })
