@@ -12,7 +12,7 @@ import './styles/style.css';
 const { Title } = Typography;
 const Login = () => {
 
-    const navigation = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     async function onFinish (values) {
@@ -20,15 +20,14 @@ const Login = () => {
             username: values.username,
             password: values.password
         });
-        console.log(loginRequest);
         if (loginRequest.error){
-            openNotification("error", "Inicio de sesión", "No se pudo iniciar sesión. Por favr intenta nuevamente.")
+            openNotification("error", "Inicio de sesión", "No se pudo iniciar sesión. Por favor intenta nuevamente.")
         }else{
             dispatch({
                 type: AuthTypes.LOGIN,
                 token: loginRequest.data.access_token
             });
-            navigation('/home');
+            navigate("/home");
         }
     };
 

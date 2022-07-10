@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import AuthStore from './../store/authStore';
 
 const API = axios.create({
     baseURL: process.env.REACT_APP_API_GATEWAY_URL,
@@ -7,10 +8,9 @@ const API = axios.create({
     headers: {'accept': 'application/json'}
 })
 
-axios.interceptors.request.use(request => {
 
-    const authState = useSelector((state) => state);
-
+API.interceptors.request.use(function (request) {
+    const authState = AuthStore.getState().auth;
     if (authState.isAuthenticated && authState.token !== ""){
         request.headers.common.Authorization = `Bearer ${authState.token}`;
     }
