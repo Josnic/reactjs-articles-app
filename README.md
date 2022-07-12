@@ -2,10 +2,19 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Develop Environment
+
+This project was worked with `NodeJS V14.19.3` and `Npm v6.14.17`.
+
+This project works with a `.env` environment file. Take `env.example` as a template.
+
 ## Available Scripts
 
 In the project directory, you can run:
 
+### `npm install`
+
+Intalls all dedendencies in the project. if you have any issue with that, please you must delete `package-lock.json` and try again.
 ### `npm start`
 
 Runs the app in the development mode.\
