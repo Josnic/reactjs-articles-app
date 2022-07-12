@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project was worked with `NodeJS V14.19.3` and `Npm v6.14.17`.
 
-This project works with a `.env` environment file. Take `env.example` as a template.
+This project works with a `.env` environment file. Take `env.example` as template.
 
 ## Available Scripts
 
