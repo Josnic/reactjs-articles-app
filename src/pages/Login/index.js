@@ -16,7 +16,7 @@ const Login = () => {
     const dispatch = useDispatch();
 
     async function onFinish (values) {
-        const loginRequest = await httpClient.post("/apiv1/user/login",{
+        const loginRequest = await httpClient().post("/apiv1/user/login",{
             username: values.username,
             password: values.password
         });
@@ -32,7 +32,7 @@ const Login = () => {
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        //console.log('Failed:', errorInfo);
     };
 
     return (

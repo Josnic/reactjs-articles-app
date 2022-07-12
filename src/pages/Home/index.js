@@ -26,7 +26,7 @@ const Home = () => {
   const loadArticles = async () =>{
     setLoading(true);
     setHasError(false);
-    const articles = await httpClient.get("/apiv1/articles/all?limit="+paginationOptions.limit+"&offset="+paginationOptions.offset);
+    const articles = await httpClient().get("/apiv1/articles/all?limit="+paginationOptions.limit+"&offset="+paginationOptions.offset);
     if (articles.error){
       setHasError(true);
     }else{
